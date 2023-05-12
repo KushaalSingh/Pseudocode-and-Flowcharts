@@ -26,7 +26,7 @@
 	4. p1 throws the ball
 		(a) Did p1 make the basket?
 				- If (YES):
-						- increment [p1_score] by 1
+					- increment [p1_score] by 1
 	
 		(b) Decrement [p1_throws] by 1
 		
