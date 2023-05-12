@@ -32,9 +32,9 @@
 		
 		(c) Is [p1_throws] == 0?
 				- If (YES):
-					Proceed to step #6
+					- Proceed to step #6
 				-If (NO):
-					Repeat step #4
+					- Repeat step #4
 		
 	5. p2 throws the ball
 		(a) Did p2 make the basket?
