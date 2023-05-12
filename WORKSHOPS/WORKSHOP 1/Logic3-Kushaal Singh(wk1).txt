@@ -45,9 +45,9 @@
 		
 		(c) Is [p2_throws] == 0?
 				- If (YES):
-					Proceed to the next step
+					- Proceed to the next step
 				-If (NO):
-					Repeat step #5
+					- Repeat step #5
 		
 	6.  Is [p1_score] = [p2_score]?
 			(a) If (YES):
