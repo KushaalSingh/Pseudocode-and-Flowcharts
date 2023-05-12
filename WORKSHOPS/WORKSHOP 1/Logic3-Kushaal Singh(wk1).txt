@@ -1,10 +1,65 @@
 
 	WORKSHOP - 1 (Basketball Shootout)
+	Logic - 3
 	----------------------------------
 	Name: Kushaal Singh
 	Group: 2 | Member: 3
 	----------------------------------
 	
 	1. Start
-	2. 
 	
+	2. Declare variables:
+		| player 1 = p1 |
+		| player 2 = p2 |
+		- p1_score = 0
+		- p2_score = 0
+		- p1_throws = 4
+		- p2_throws = 4
+		- ties
+	
+	3. Which player is shooting first?
+		(a) If p1:
+				- Proceed to step #4
+		(b) If p2:
+				- Proceed to step #5
+				
+	4. p1 throws the ball
+		(a) Did p1 make the basket?
+				- If (YES):
+						- increment [p1_score] by 1
+	
+		(b) Decrement [p1_throws] by 1
+		
+		(c) Is [p1_throws] == 0?
+				- If (YES):
+					Proceed to step #6
+				-If (NO):
+					Repeat step #4
+		
+	5. p2 throws the ball
+		(a) Did p2 make the basket?
+				- If (YES):
+					- increment [p2_score] by 1
+	
+		(b) Decrement [p1_throws] by 1
+		
+		(c) Is [p2_throws] == 0?
+				- If (YES):
+					Proceed to the next step
+				-If (NO):
+					Repeat step #5
+		
+	6.  Is [p1_score] = [p2_score]?
+			(a) If (YES):
+					- increment [tie] by 1
+					- Go back to to step #3
+			(b) If (NO):
+					- Proceed to the next step
+	
+	7.	Is [p1_score] > [p2_score]?
+			(a) If (YES):
+					- Display: "Player 1 is the winner!!"
+			(b) If (NO):
+					- Display: "Player 2 is the winner!!"
+	
+	8. End
