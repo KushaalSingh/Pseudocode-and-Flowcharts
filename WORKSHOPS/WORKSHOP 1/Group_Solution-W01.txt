@@ -1,0 +1,93 @@
+
+	Workshop - 1
+	Group Solution
+	
+	
+	1. Start
+	
+	2. Declare Variables:
+		| player 1 = p1 |
+		| player 2 = p2 |
+		- p1_dieRoll = 0 | p1_dieRoll = 0
+		- p1_score = 0 | p2_score = 0
+		- p1_throws = 4 | p2_throws = 4
+		- ties = 0
+		- subTotal = 0 | prize_amount = 0
+		
+	3. (a) p1 rolls the die. 
+			- Get [p1_dieRoll] value
+			
+	   (b) p2 rolls the die. 
+			- Get [p2_dieRoll] value
+	
+	4. If [p1_dieRoll] == [p2_dieRoll]
+			- Go back top step #3
+	
+	5. If [p1_dieRoll] > [p2_dieRoll]
+			- Move to step #6
+	   Else
+			- Move to step #7
+			
+	6. p1 throws the ball
+		(a) Did p1 make the basket?
+				- (YES):
+					- increment [p1_score] by 1
+				- (NO):
+					- Continue
+	
+		(b) Decrement [p1_throws] by 1
+		
+		(c) Is [p1_throws] == 0?
+				- If (YES):
+					- Proceed to step #6
+				-If (NO):
+					- Repeat step #6
+					
+	7. p2 throws the ball
+	
+		(a) Is p2_throws == 0?
+				- (YES):
+					- Proceed to the next step
+				- (NO):
+					- Continue
+					
+		(b) Did p2 make the basket?
+				- (YES):
+					- increment [p2_score] by 1
+				- (NO):
+					- Continue 
+					
+		(c) Decrement [p1_throws] by 1
+		
+		(d) Is [p2_throws] == 0?
+				- If (YES):
+					- Proceed to the next step
+				-If (NO):
+					- Repeat step #7
+					
+	8. Is p1_throws == 0?
+		(a) (YES):
+				- Proceed to next step
+				
+		(b) (NO):
+				- Go to step #6
+					
+	9. Is [p1_score] == [p2_score]?
+			(a) If (YES):
+					- increment [tie] by 1
+					- Reset p1_throws = 4 & p2_throws = 4
+					- Go back to to step #6
+					
+			(b) If (NO):
+					- Proceed to the next step
+					
+	10. Is [p1_score] > [p2_score]?
+		- (YES):
+			- [p1_score] - [p2_throws] = [subTotal]
+			
+		- (NO):
+			- [p2_score] - [p2_score] = [subTotal]
+	
+	11.	[subTotal] + ([tie] x 0.50) = [prize_amount]
+	
+	12. 
