@@ -1,7 +1,10 @@
 
-	Workshop - 1
-	Group Solution
-	
+	Workshop - 1 (Group Solution)
+	-----------------------------
+	Kushaal Singh
+	Misol Kang
+	Yuvraj Kathait
+	-----------------------------
 	
 	1. Start
 	
@@ -86,8 +89,21 @@
 			- [p1_score] - [p2_throws] = [subTotal]
 			
 		- (NO):
-			- [p2_score] - [p2_score] = [subTotal]
+			- [p2_score] - [p1_score] = [subTotal]
 	
 	11.	[subTotal] + ([tie] x 0.50) = [prize_amount]
 	
-	12. 
+	12. Is [prize_amount] a whole number?
+			(a) (YES):
+					- Proceed to next step
+			
+			(b) (NO):
+					- Increment the value of [prize_amount] by 0.50
+	
+	13. If [p1_score] > [p2_score]:
+			- p1 (Player 1) gets the [prize_amount]
+		
+		Else:
+			- p2 (Player 2) gets the [prize_amount]
+	
+	14. End
