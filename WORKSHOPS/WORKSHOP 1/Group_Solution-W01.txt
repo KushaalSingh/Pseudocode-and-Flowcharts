@@ -1,9 +1,10 @@
 
 	Workshop - 1 (Group Solution)
 	-----------------------------
-	Kushaal Singh
-	Misol Kang
-	Yuvraj Kathait
+	Group: 2 
+	Kushaal Singh (Member: 3)
+	Misol Kang	  (Member: 1)
+	Yuvraj Kathait(Member: 2)
 	-----------------------------
 	
 	1. Start
@@ -23,10 +24,10 @@
 	   (b) p2 rolls the die. 
 			- Get [p2_dieRoll] value
 	
-	4. If [p1_dieRoll] == [p2_dieRoll]
-			- Go back top step #3
+	4. If [p1_dieRoll] equals [p2_dieRoll]
+			- Go back to step #3
 	
-	5. If [p1_dieRoll] > [p2_dieRoll]
+	5. If [p1_dieRoll] greater than [p2_dieRoll]
 			- Move to step #6
 	   Else
 			- Move to step #7
@@ -40,15 +41,15 @@
 	
 		(b) Decrement [p1_throws] by 1
 		
-		(c) Is [p1_throws] == 0?
+		(c) Is [p1_throws] equal to 0?
 				- If (YES):
-					- Proceed to step #6
+					- Proceed to step #7
 				-If (NO):
 					- Repeat step #6
 					
 	7. p2 throws the ball
 	
-		(a) Is p2_throws == 0?
+		(a) Is p2_throws equal to 0?
 				- (YES):
 					- Proceed to the next step
 				- (NO):
@@ -62,20 +63,20 @@
 					
 		(c) Decrement [p1_throws] by 1
 		
-		(d) Is [p2_throws] == 0?
+		(d) Is [p2_throws] equal to 0?
 				- If (YES):
 					- Proceed to the next step
 				-If (NO):
 					- Repeat step #7
 					
-	8. Is p1_throws == 0?
+	8. Is p1_throws equal to 0?
 		(a) (YES):
 				- Proceed to next step
 				
 		(b) (NO):
 				- Go to step #6
 					
-	9. Is [p1_score] == [p2_score]?
+	9. Is [p1_score] equal to [p2_score]?
 			(a) If (YES):
 					- increment [tie] by 1
 					- Reset p1_throws = 4 & p2_throws = 4
@@ -84,14 +85,14 @@
 			(b) If (NO):
 					- Proceed to the next step
 					
-	10. Is [p1_score] > [p2_score]?
+	10. Is [p1_score] greater than [p2_score]?
 		- (YES):
 			- [p1_score] - [p2_throws] = [subTotal]
 			
 		- (NO):
 			- [p2_score] - [p1_score] = [subTotal]
 	
-	11.	[subTotal] + ([tie] x 0.50) = [prize_amount]
+	11.	[subTotal] - ([tie] x 0.50) = [prize_amount]
 	
 	12. Is [prize_amount] a whole number?
 			(a) (YES):
@@ -100,10 +101,91 @@
 			(b) (NO):
 					- Increment the value of [prize_amount] by 0.50
 	
-	13. If [p1_score] > [p2_score]:
+	13. If [p1_score] greater [p2_score]:
 			- p1 (Player 1) gets the [prize_amount]
 		
 		Else:
 			- p2 (Player 2) gets the [prize_amount]
 	
 	14. End
+	
+	
+	---------------
+	TEST SCENARIO 1
+	---------------
+	
+	- Player 1 Rolls the die : Result - 2
+	
+	- Player 2 Rolls the die : Result - 5
+	
+	
+	- Player 2 starts shooting
+			- They make the first basket (p2_score = 1)
+			- They make the second basket (p2_score = 2)
+			- They don't make the second basket (p2_score = 2)
+			- They make the third basket (p2_score = 3)
+			
+	- Player 1 starts shooting
+			- They don't make the first basket (p2_score = 0)
+			- They don't make the basket (p2_score = 0)
+			- They make the third basket (p2_score = 1)
+			- They don't make the fourth basket (p2_score = 1)
+			
+	- Player 2  -  Player 1  = 3  -  1
+	
+	- Sub-Total is 2 dollars
+	
+	- Player 2 gets 5 dollars
+	
+	
+	---------------
+	Test Scenario 2
+	---------------
+	
+	- Player 1 rolls the die : Result - 3
+	
+	- Player 2 rolls the die : Result - 3
+	
+	- Move back to step #3 
+	
+	- Player 1 rolls the die : Result - 5
+	
+	- Player 2 rolls the die : Result - 1
+	
+	- Player 1 starts shooting
+			- They make the first shot (p1_score  = 1)
+			- They make the second shot (p1_score = 2)
+			- They don't make the third shot (p1_score = 2)
+			- They don't make the third shot (p1_score = 2)
+			
+	- Player 2 starts shooting
+			- They make the first shot (p2_score = 1)
+			- They don't make the second shot (p2_score = 1)
+			- They make the third shot (p2_score = 2)
+			- They don't make the forth shot (p2_score = 2)
+			
+	- Player 1 score equals Player 2 score (tie = 1)
+			
+	- Player 1 starts shooting
+			- They make the first shot (p1_score  = 1)
+			- They don't make the second shot (p1_score = 1)
+			- They make the third shot (p1_score = 2)
+			- They make the fourth shot (p1_score = 3)
+			
+	- Player 2 starts shooting
+			- They don't make the first shot (p2_score = 0)
+			- They make the second shot (p2_score = 1)
+			- They make the third shot (p2_score = 2)
+			- They don't make the forth shot (p2_score = 2)
+			
+	- Player 1's score is greater than that of player 2 
+	
+	- Player 1  -  Player 2  =  3  -  2
+	
+	- tie  x  0.5  =  1  x  0.5 
+	
+	- 1  -  0.5  =  0.5 
+	
+	- Round up the prize to the nearest whole number, 1
+	
+	- Player 1 gets 1 dollar 
