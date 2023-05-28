@@ -1,0 +1,68 @@
+	
+	WORKSHOP - 2 (Traffic Lights)
+	Logic - 3
+	-----------------------------
+	Name: Kushaal Singh
+	Group: 2 | Member: 3
+	-----------------------------
+	
+	1. START
+	
+	2. Declare Objects:
+			- RED_LIGHT
+			- WALK_BUTTON
+			- CAR_SENSOR
+	
+	3. Declare Variables:
+			- carNum = 0
+			
+	4. Timer Declaration:
+			- startTime = 0
+			- currentTime = 0
+			- secondsDiff = 0 (currentTime - startTime)
+			- timeToWait = 73 (seconds)
+	
+	5. Capture Current Time:
+			- [startTime] = (NOW)
+			- [currentTime] = [startTime]
+			
+	6. [secondsDiff] = [currentTime] - [startTime]
+			
+	7. Display {RED_LIGHT}
+	
+	8. {CAR_SENSOR} ACTIVATED
+			- Check for cars
+			- Get [carNum]
+	
+	9. Is [carNum] greater than or equal to 5
+			(a) (YES):
+					- Decrement [timeToWait] to 10 (seconds)
+			
+			(b)	(NO):
+					- proceed to the next step
+	
+	10. Did someone activate the {WALK_BUTTON}?
+			(a) (YES):
+					(a.1) Is [timeToWait] is equal 10 (seconds)?
+							- (YES):
+									- Proceed to the next step
+			
+							- (NO):
+									- Decrement [timeToWait] to 10 (seconds)
+	
+			(b) (NO):
+					- Proceed to the next step
+	
+	11. Is [secondsDiff] equal to [timeToWait]?
+			(a) (YES):
+					- Proceed to the next step
+			
+			(b) (NO):
+					(b.1) update [currentTime] = (now)
+					(b.2) How many seconds have past?
+							- [secondsDiff] = [currentTime] - [startTime]
+					(b.3) Return to step #7
+	
+	12. Stop displaying {RED_LIGHT}
+	
+	13. END
