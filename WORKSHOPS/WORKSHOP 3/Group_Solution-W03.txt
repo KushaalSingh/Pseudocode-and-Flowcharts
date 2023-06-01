@@ -2,7 +2,24 @@
 	WORKSHOP - 2 (Group Solution)
 	
 	Kushaal Singh - 11530228
+	
 	=============================
+	
+	--------------------------
+	Global Objects / Variables
+	--------------------------
+		1. Timer Declaration:
+			- startTime = 0
+			- currentTime = 0
+			- secondsDiff = 0 (currentTime - startTime)
+			- timeToWait = 153 (seconds)
+		
+		2. Declare Objects:
+			- RED_LIGHT
+			- GREEN_LIGHT
+			- AMBER_LIGHT
+			- AVD_LEFT_GREEN
+			- AVD_LEFT_AMBER
 	
 	------------
 	MAIN PROCESS
@@ -10,125 +27,119 @@
 	1. START
 	
 	2. Declare Objects:
-			- RED_LIGHT
-			- AMBER_LIGHT
-			- GREEN_LIGHT
-			- AVD_LEFT_GREEN
-			- AVD_LEFT_AMBER
 			- WALK_BUTTON
 			- CAR_SENSOR
 			
 	3. Declare Variables:
 			- carNum = 0
+			- previousState = {RED_LIGHT}
+			- currentState = ' '
 			
-	4. Timer Declaration:
-			- startTime = 0
-			- currentTime = 0
-			- secondsDiff = 0 (currentTime - startTime)
-			- timeToWait = 133 (seconds)
-			
-	5. Capture Current Time:
+	4. Capture Current Time:
 			- [startTime] = (NOW)
 			- [currentTime] = [startTime]
 	
-	6. Display {GREEN_LIGHT} + {AVD_LEFT_GREEN}
-			(a) Is there an "INTERRUPT"?
+	5. Display {GREEN_LIGHT} + {AVD_LEFT_GREEN}
+			(a) currentState = {GREEN_LIGHT} + {AVD_LEFT_GREEN}
+			
+			(b) Is there an "INTERRUPT"?
 					(YES):
 							- Call <INTERRUPT : SUB-PROCESS>
 							- Go back to step #1. 
 					(NO):
 							- Continue.
 							
-			(b) update [currentTime] = (now)
-			
-			(c) How many seconds have past?
-					- [secondsDiff] = [currentTime] - [startTime]
+			(b) Call <TIME_CHECK : SUB-PROCESS>
 					
 			(d) Is [secondsDiff] equal to 15?
 					(YES):
 							- Turn off {AVD_LEFT_GREEN}
 							- Proceed to the next step.
+							- previousState = {GREEN_LIGHT} + {AVD_LEFT_GREEN}
 					
 					(NO):
-							- Repeat step #6.
+							- Repeat step #5.
 	
-	7. Display {GREEN_LIGHT} + {AVD_LEFT_AMBER}
-			(a) Is there an "INTERRUPT"?
+	6. Display {GREEN_LIGHT} + {AVD_LEFT_AMBER}
+			(a) currentState = {GREEN_LIGHT} + {AVD_LEFT_AMBER}
+			
+			(b) Is there an "INTERRUPT"?
 					(YES):
 							- Call <INTERRUPT : SUB-PROCESS>
 							- Go back to step #1. 
 					(NO):
 							- Continue.
 							
-			(b) update [currentTime] = (now)
-			
-			(c) How many seconds have past?
-					- [secondsDiff] = [currentTime] - [startTime]
+			(c) Call <TIME_CHECK : SUB-PROCESS>
 					
 			(d) Is [secondsDiff] equal to 20?
 					(YES):
 							- Turn off {AVD_LEFT_AMBER}
 							- Proceed to the next step.
+							- previousState = {GREEN_LIGHT} + {AVD_LEFT_AMBER}
 					
 					(NO):
-							- Repeat step #7.
+							- Repeat step #6.
 							
-	8. Display {GREEN_LIGHT}
-			(a) Is there an "INTERRUPT"?
+	7. Display {GREEN_LIGHT}
+			(a) currentState = {GREEN_LIGHT}
+			
+			(b) Is there an "INTERRUPT"?
 					(YES):
 							- Call <INTERRUPT : SUB-PROCESS>
 							- Go back to step #1.
 					(NO):
 							- Continue.
 							
-			(b)	update [currentTime] = (now)
-
-			(c) How many seconds have past?
-					- [secondsDiff] = [currentTime] - [startTime]
+			(c)	Call <TIME_CHECK : SUB-PROCESS>
 					
 			(d) Is [secondsDiff] equal to 65?
 					(YES):
 							- Turn off {GREEN_LIGHT}
 							- Proceed to the next step.
+							- previousState = {GREEN_LIGHT}
 					(No):
-							- Repeat step #8.
+							- Repeat step #7.
 			
-	9. Display {AMBER_LIGHT}
-			(a) Is there an "INTERRUPT"?
+	8. Display {AMBER_LIGHT}
+			(a) currentState = {AMBER_LIGHT}
+			
+			(b) Is there an "INTERRUPT"?
 					(YES):
 							- Call <INTERRUPT : SUB-PROCESS>
 							- Go back to step #1.
 					(NO):
 							- Continue.
 							
-			(b)	update [currentTime] = (now)
-
-			(c) How many seconds have past?
-					- [secondsDiff] = [currentTime] - [startTime]
+			(c) Call <TIME_CHECK : SUB-PROCESS>
 					
-			(d) Is [secondsDiff] equal to 65?
+			(d) Is [secondsDiff] equal to 75?
 					(YES):
 							- Turn off {AMBER_LIGHT}
 							- Proceed to the next step.
+							- previousState = {AMBER_LIGHT}
 					(No):
-							- Repeat step #9.
+							- Repeat step #8.
 	
-	10. Display {RED_LIGHT}, Active {CAR_SENSOR} & {WALK_BUTTON}
-			(a) Is there an "INTERRUPT"?
+	9. Display {RED_LIGHT}, Active {CAR_SENSOR} & {WALK_BUTTON}
+	
+			(a) currentState = {RED_LIGHT}
+	
+			(b) Is there an "INTERRUPT"?
 					(YES):
 							- Call <INTERRUPT : SUB-PROCESS>
 							- Go back to step #1.
 					(NO):
 							- Continue.
 							
-			(b) Is [carNum] equal or greater than 5?
+			(c) Is [carNum] equal or greater than 5?
 					(YES):
 							- Update [timeToWait] to 10 (seconds)
 			
 					(NO):
 							- Continue.
 							
-			(c) Did someone activate the {WALK_BUTTON}?
+			(d) Did someone activate the {WALK_BUTTON}?
 				    (YES):
 							- Is [timeToWait] is equal 10 (seconds)?
 									- (YES):
@@ -140,19 +151,17 @@
 					(NO):
 							- Continue.
 							
-			(d)	update [currentTime] = (now)
-
-			(e) How many seconds have past?
-					- [secondsDiff] = [currentTime] - [startTime]
+			(e)	Call <TIME_CHECK : SUB-PROCESS>
 					
 			(f) Is [secondsDiff] equal to [timeToWait]?
 					(YES):
 							- Turn off {RED_LIGHT}
 							- Proceed to the next step.
+							- previousState = {RED_LIGHT}
 					(No):
-							- Repeat step #10.
+							- Repeat step #9.
 	
-	11. END
+	10. END
 	
 	-----------------------
 	INTERRUPT : SUB-PROCESS
@@ -160,9 +169,6 @@
 	1. START
 	
 	2. Declare Objects:
-			- RED_LIGHT
-			- GREEN_LIGHT
-			- AMBER_LIGHT
 			- RESET_SWITCH
 	
 	3. - BLINK {RED_LIGHT}
@@ -176,3 +182,46 @@
 					- Go back to step #3
 	
 	7. END
+	
+	------------------------
+	TIME_CHECK : SUB-PROCESS
+	------------------------
+	
+	1. START
+			
+	2. Update [currentTime] = (now)
+	   
+	4. How many seconds have past?
+			- [secondsDiff] = [currentTime] - [startTime]
+			
+	5. Return [secondsDiff]
+	
+	6. END
+	
+	---------------
+	TEST SCENARIO 1
+	---------------
+	1. Green light & advance left green light ON. (0 seconds have passed)
+	2. Green light & advance left amber light ON. (15 seconds have passed)
+	3. Green light ON. (20 seconds have passed)
+	4. Amber light ON. (65 seconds have passed)
+	6. Red Light ON. (70 seconds have passed)
+	7. "To walk" button has been pressed. (timeToWait goes down to 10)
+	8. Process over. (80 seconds have passed)
+	
+	---------------
+	TEST SCENARIO 2
+	---------------
+	1.  Green light & advance left green light ON. (0 seconds have passed)
+	2.  Green light & advance left amber light ON. (15 seconds have passed)
+	3.  Green light ON. (20 seconds have passed)
+	4.  There is an accident (interrupt)
+	5.  *Technician presses the "RESET_SWITCH" (Unknown amount of time as passed)
+	6.  System is ((RESET)) and starts again from step 1
+	7.  Green light & advance left green light ON. (0 seconds have passed)
+	8.  Green light & advance left amber light ON. (15 seconds have passed)
+	9.  Green light ON. (20 seconds have passed)
+	10. Amber light ON. (65 seconds have passed)
+	11. Red Light ON. (70 seconds have passed)
+	12. "CAR_SENSOR" detects 7 cars waiting. (timeToWait goes down to 10)
+	13. Process Over. (80 seconds have passed)
