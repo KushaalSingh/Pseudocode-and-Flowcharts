@@ -1,0 +1,441 @@
+
+	WORKSHOPR - 5 : Group Solution
+	Kushaal Singh - 1156320228
+	Misol Kang - 181696212
+	Yuraj Kathait - 167749217
+	
+	
+	Data Structures:
+		- total = 0.00
+		- subTotal = 0.00  | tax = 0.00
+		- group_size       | total_cvrChrg = 0.00
+		- num_children = 0 | cvrChrg_children = 0.00
+		- num_adult = 0	   | cvrChrg_adult = 0.00
+		- num_senior = 0   | cvrChrg_senior = 0.00
+		- showTime = ' ' 
+		- showType = ' ' 
+		- ticketCharges = 0.00
+		- discount = 0.00
+		- final_ticketCharegs = 0
+		- valet_code = 0   | valet_charges = 0.00
+		- valet_choice = ' '
+		- tip = 0
+		- snackType = 0 (Non-Alcoholic Beverage = 1, Alcoholic Beverage = 2, Candy = 3)
+		- snack_Qty = 0
+		- cart_total = 0
+		
+	Objects:
+		- {QR_CODE}
+		- {PAYMENT_PROCESSOR}
+		
+	------------
+	MAIN PROCESS
+	------------
+	1. START
+	
+	2. Display:
+	
+		+-------------------------------------------------------------+
+		| A $50.00 deposit will be charged to secure your reservation |
+		|															  |
+		|					Press "Pay" to proceed					  |
+		|							  OR							  |
+		|					Press "Cancel" to end					  |
+		|															  |
+		|	(PAY)										   (CANCLE)	  |	
+		+-------------------------------------------------------------+
+	
+	3. Did the user select "pay" or "Cancel"?
+		- (PAY):
+				Proceed to the next step
+		
+		- (CANCLE):	
+				Proceed to step ##############
+	
+	4. OPEN {PAYMENT_PROCESSOR} & Charge $50.00
+	
+	5. Generate {QR_CODE}
+	
+	6. Display:
+	
+		+-------------------------+
+		|	RESERVATION SECURED   |
+		|						  |
+		|		 {QR_CODE}		  |
+		+-------------------------+
+	
+	7. Call <Cover Charges : Sub - Process>
+	
+	8. Call <Ticket Charges : Sub - Process>
+	
+	9. Display:
+		
+		+-----------------------------------------+
+		|Would you like to use the Valet Services?|
+		|										  |
+		|   (YES)						   (NO)   |
+		+-----------------------------------------+
+		
+	10. If the user chooses "YES":
+			- Call <Valet : Sub - Process>
+			
+	11. Call <Snack Bar : Sub - Process>
+	
+	12. [total_cvrChrg] + [final_ticketCharegs] + [valet_charges] + [cart_total] = [subTotal]
+	
+	13. 0.13 * [subTotal] = [tax]
+	
+	14. ([subTotal] + [tax]) - 50.00 = [total]
+	
+	15. Call <Receipt : Sub - Process>
+	
+	16. END
+	
+	-----------------------------
+	Cover Charges : Sub - Process
+	-----------------------------
+	1. START
+	
+	2. Display:
+		How many children in your group?
+	
+	3. Get [num_children]
+	
+	4. Display:
+		How many adults in your group?
+	
+	5. Get [num_adult]
+	
+	6. Display:
+		How many senior in your group?
+		
+	7. Get [num_senior]
+	
+	8. [num_children] * 0.75 = [cvrChrg_children]
+	
+	9. [num_adult] * 4.00 = [cvrChrg_adult]
+	
+	10. [num_senior] * 1.50 = [cvrChrg_senior]
+	
+	11. [total_cvrChrg] = [cvrChrg_children] + [cvrChrg_adult] + [cvrChrg_senior]
+	
+	12. [group_size] = [num_children] + [num_adult] + [num_children]
+	
+	13. END
+	
+	------------------------------
+	Ticket Charges : Sub - Process
+	------------------------------
+	1. START
+	
+	2. Display:
+	
+	   +-----------------------------------+
+	   |Which show time do you want to see?|
+	   |								   |
+	   |(Matinée)                 (Evening)|
+	   +-----------------------------------+
+	   
+	3. Get [showTime]
+	   
+	4. Display:
+		
+	   +-------------------------------------+
+	   |Which show type do you want to watch?|
+	   |									 |
+	   |(Musical)					(Theatre)|
+	   +-------------------------------------+
+	
+	5. Get [showType]
+
+	6. If the [showTime] is "Matinée"
+		- [valet_code] = 1
+		What is the show type?
+			(a) If [showType] is "Musical":
+					- 70 * [group_size] = [ticketCharges]
+			
+			(b) If [showType] is "Theatre":
+					- 55 * [group_size] = [ticketCharges]
+	
+	7. If the [showTime] is "Evening"
+		- [valet_code] = 2
+		What is the show type?
+			(a) If [showType] is "Musical":	
+					- 150 * [group_size] = [ticketCharges]
+			
+			(b) If [showType] is "Theatre":
+					- 155 * [group_size] = [ticketCharges]
+					
+	8. END
+	
+	-------------------------
+	Discounts : Sub - Process
+	-------------------------
+	
+	1. START
+	
+	2. Is [group_size] equal to 2?
+			(a) (YES):
+					- 0.05 * [ticketCharges] = [discount]
+			
+			(b) (NO):
+					- Proceed to the next step
+			
+	3. Is [group_size] more than 2?
+			(a) (YES):
+					Is [group_size] equal 3?
+						- (YES):
+							- 0.15 * [ticketCharges] = [discount]
+									
+						- (NO):
+							- Proceed to the next step
+	
+	4. Is [group_size] more than 3?
+			(a) (YES):
+					Is [group_size] equal 4?
+						- (YES):
+							- 0.20 * [ticketCharges] = [discount]
+									
+						- (NO):
+							- Proceed to the next step
+	
+	5. Is [group_size] more than 4?
+			(a) (YES):
+					Is [group_size] equal 5 or more?
+						- (YES):
+							- 0.30 * [ticketCharges] = [discount]
+									
+						- (NO):
+							Proceed to the next step
+	
+	6. Is [group_size] less than 2?
+			(a) YES:
+					0.00 *  [ticketCharges] = [discount]
+					
+	7. [ticketCharges] - [discount] = [final_ticketCharegs]
+	
+	8. END
+	
+	---------------------
+	Valet : Sub - Process
+	---------------------
+	
+	1. START
+	
+	2. Display:
+	
+		+----------------------------------------+
+		|Do you want the standard parking or VIP?|
+		|										 |
+		|(STANDARD)							(VIP)|
+		+----------------------------------------+
+		
+	3.  Did the user select "Standard"?
+			- [valet_choice] = 'Standard'
+			(a) (YES):
+					Is [valet_code] = 1?
+						(YES):
+							[valet_charges] += 10.00
+						
+						(NO):
+							[valet_charges] += 20.00
+	
+	4. Did the user select "VIP"?
+			- [valet_choice] = 'VIP'
+			(a) (YES):
+					Is [valet_code] = 1?
+						(YES):
+							[valet_charges] += 15.00
+						
+						(NO):
+							[valet_charges] += 30.00
+	
+	5. Display:
+	
+		+-------------------+
+		|Do you wish to tip?|
+		|					| 
+		|(YES)			(NO)|
+		+-------------------+
+	
+	6. If the user choose "YES"
+			Display:
+				"How much would you like to tip?: "
+	
+	7. Get [tip]
+	
+	8. [valet_charges] += [tip]
+					
+	9. END
+	
+	-------------------------
+	Snack Bar : Sub - Process
+	-------------------------
+	
+	1. START
+	
+	2. Diplay:
+			
+		+------------------------------------+
+		|Snack Stand prices ....			 |
+		|Non-Alcoholic Beverage----------2.25|
+		|Alcoholic Beverage--------------7.50|
+		|Misc. Candy Item----------------1.75|
+		+------------------------------------+
+		
+	3. Display:
+			Which Sanck would you like?
+			1. Non-Alcoholic Beverage
+			2. Alcoholic Beverage
+			3. Misc. Candy Item
+			4. No Snacks
+	
+	4. Did the user choose "Non-Alcoholic Beverage"?
+		(YES):
+			- [snackType] = 1
+		(NO):
+			- Proceed to the next step
+	
+	5. Did the user choose "Alcoholic Beverage"?
+		(YES):
+			- [snackType] = 2
+		(NO):
+			- Proceed to the next step
+	
+	6. Did the user choose "Misc. Candy Item"?
+		(YES):
+			- [snackType] = 3
+			
+	7. Is the [snackType] equal to 1?
+		(YES):
+			Display:
+				" How many Non-Alcoholic Beverage would you like? : "
+		(NO):
+			Is the [snackType] equal to 2?
+				(YES):
+					Display :
+						" How many Alcoholic Beverages would you like? : "
+				(NO):
+					Is the [snackType] equal to 3?
+						(YES):
+							Display :
+								" How many Misc. Candy Item would you like? : "
+	
+	8. Get [snack_Qty]
+	
+	9. Is [snackType] equal to 1?
+		(YES):
+			- cart_total += 2.25 * [snack_Qty]
+			
+		(NO):
+			Is [snackType] equal to 2?
+				(YES):
+					- cart_total += 7.50 * [snack_Qty]
+					
+				(NO):
+					Is [snackType] equal to 3?
+						(YES):
+							- cart_total += 1.75 * [snack_Qty]
+									
+	10. Display:
+		
+		 +------------------------------------+
+		 |Do you wish to get any other snacks?|
+		 |	                                  |
+		 |(YES)							  (NO)|
+		 +------------------------------------+
+	
+	11. If user selected "YES":
+			- Go back to step 3
+		
+	12. END
+	
+	-----------------------
+	Receipt : Sub - Process
+	-----------------------
+	
+	1. START
+	
+	2. Display:
+		
+		+----------------------------------------------------+
+		|              A La Carte Entertainment			     |
+		|              ========================			     |
+		|													 |
+		|Cover Charges:										 |
+		|	Cover Chanrges for children -> [cvrChrg_children]|
+		|	Cover charges for adults    -> [cvrChrg_adult]   |
+		|	Cover charges for seniors   -> [cvrChrg_senior]  |
+		|----------------------------------------------------|
+		|									[total_cvrChrg]  |
+		|									                 |
+		|													 |
+		|Ticket Charges:									 |
+		|	[showTime] [showType]		-> [ticketCharges]   |
+		|													 |
+		|	Discounts					-> [discount]        |
+		|----------------------------------------------------|
+		|							    [final_ticketCharegs]|
+		|								                     |
+		|                                                    |
+		|Snack Charges					-> [cart_total]		 |
+		|----------------------------------------------------|
+		|													 |
+		|													 |
+		|Valet Charges:										 |
+		|	[showTime] [valet_choice]   -> [valet_charges]	 |
+		|	(TIP - [tip])									 |
+		|----------------------------------------------------|
+		|													 |
+		|													 |
+		|Sub - Total                    -> [subTotal]		 |
+		|													 |
+		|Tax (13%)                      -> [tax]			 |
+		|----------------------------------------------------|
+		|Total (-50.00 of deposit)	    -> [total]			 |
+		+----------------------------------------------------+
+		
+	3. END
+	
+	
+	---------------
+	Test Scenario 1
+	---------------
+	- 2 adults, 1 child, 2 seniors plan to go to the venue at 11:30 am and see musical
+		- deposit: $50.00
+		- cover charge: $11.75
+		- ticket: $350.00
+		- discount: 30% off
+			- total ticket charge: $245.00
+	- They opt for the VIP valet service
+		- valet charge: $10.00
+	- At intermission, they order one bag of chips, three Sprite pops, and one wine
+		- snack charge: $16.00
+	- After the production is over, they tip $4.00 for valet parking
+		- total valet charge: $14.00
+	- Subtotal: $286.75
+	- Tax: $37.28
+	- Total: $274.03
+	- Get receipt
+	- They made full payment and leave the building
+
+
+	---------------
+	Test Scenario 2
+	---------------
+	- 2 adults plan to go to the venue at 7:00 pm and see the theatre production
+		- deposit: $50.00
+		- cover charge: $8.00
+		- ticket: $230.00
+		- discount: 5% off
+			- total ticket charge: $218.50
+	- They opt for the Standard valet service
+		- valet charge: $20.00
+	- At intermission, they order two beers and one plate of nachos
+		- snack charge: $16.75
+	- After the production is over, they don't tip for valet parking
+	- Subtotal: $263.25
+	- Tax: $34.22
+	- Total: $247.47
+	- Get receipt
+	- They made full payment and leave the building

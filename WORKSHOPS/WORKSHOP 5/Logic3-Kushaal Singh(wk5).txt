@@ -1,0 +1,118 @@
+
+	WORKSHOPR - 5 : Group Solution
+	Kushaal Singh - 1156320228
+	Misol Kang - 181696212
+	
+	
+	Data Structures:
+		- total = 0.00
+		- group_size       | total_cvrChrg = 0.00
+		- num_children = 0 | cvrChrg_children = 0.00
+		- num_adult = 0	   | cvrChrg_adult = 0.00
+		- num_senior = 0   | cvrChrg_senior = 0.00
+		- showTime = ' ' 
+		- showType = ' ' 
+	
+	Objects:
+		- {QR_CODE} (digital)
+		- {PAYMENT_PROCESSOR}
+		
+	------------
+	MAIN PROCESS
+	------------
+	1. START
+	
+	2. Display:
+	
+		+-------------------------------------------------------------+
+		| A $50.00 deposit will be charged to secure your reservation |
+		|															  |
+		|					Press "Pay" to proceed					  |
+		|							  OR							  |
+		|					Press "Cancel" to end					  |
+		|															  |
+		|	(PAY)										   (CANCLE)	  |	
+		+-------------------------------------------------------------+
+	
+	3. Did the user select "pay" or "Cancel"?
+		- (PAY):
+				Proceed to the next step
+		
+		- (CANCLE):	
+				Proceed to step ##############
+	
+	4. OPEN {PAYMENT_PROCESSOR} & Charge $50.00
+	
+	5. Generate {QR_CODE}
+	
+	6. Display:
+	
+		+-------------------------+
+		|	RESERVATION SECURED   |
+		|						  |
+		|		 {QR_CODE}		  |
+		+-------------------------+
+	
+	7. Call <Cover Charges : Sub - Process>
+	
+	
+	-----------------------------
+	Cover Charges : Sub - Process
+	-----------------------------
+	1. START
+	
+	2. Display:
+		How many children in your group?
+	
+	3. Get [num_children]
+	
+	4. Display:
+		How many adults in your group?
+	
+	5. Get [num_adult]
+	
+	6. Display:
+		How many senior in your group?
+		
+	7. Get [num_senior]
+	
+	8. [num_children] * 0.75 = [cvrChrg_children]
+	
+	9. [num_adult] * 4.00 = [cvrChrg_adult]
+	
+	10. [num_senior] * 1.50 = [cvrChrg_senior]
+	
+	11. [total_cvrChrg] = [cvrChrg_children] + [cvrChrg_adult] + [cvrChrg_senior]
+	
+	12. [group_size] = [num_children] + [num_adult] + [num_children]
+	
+	13. END
+	
+	------------------------------
+	Ticket Charges : Sub - Process
+	------------------------------
+	1. START
+	
+	2. Display:
+	
+	   +-----------------------------------+
+	   |Which show time do you want to see?|
+	   |								   |
+	   |(Matinée)                 (Evening)|
+	   +-----------------------------------+
+	   
+	3. Get [showTime]
+	   
+	4. Display:
+		
+	   +-------------------------------------+
+	   |Which show type do you want to watch?|
+	   |									 |
+	   |(Musical)					(Theatre)|
+	   +-------------------------------------+
+	
+	5. Get [showType]
+
+	6. If the show time is "Matinée"
+		What is the show type?
+			- (
