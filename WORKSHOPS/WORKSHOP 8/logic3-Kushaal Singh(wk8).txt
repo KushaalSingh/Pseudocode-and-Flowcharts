@@ -1,1 +1,111 @@
 
+	WORKSHOP - 8 (Self Checkout)
+	Logic - 3
+	------------------------------
+	Name : Kushaal Singh
+	Group : 5 | Member : 3
+	------------------------------
+	
+	DATA STRUCTURES
+		- item_list[n] (n is number of product, received form a previous function)
+		- item_price[n] (n corrisponds with the n in item_list, received from a previous function)
+		- item_status[n] = ' ' (n corrisponds with the n in item_list)
+		- nonprsh_subTotal = 0.00
+		- prsh_subTotal = 0.00
+		- subTotal = 0.00
+		- tax = 0.00
+	
+	BLACKBOX PROCESS
+		- PAYMENT PROCESSOR
+		
+	------------
+	MAIN PROCESS
+	------------
+	1. START
+	
+	2. n = 1
+			
+	3. Is item_list[n] a non-perishable item?
+		(YES):
+			nonprsh_subTotal += item_price[n]
+			item_status[n] = 'Non Perishable'
+		(NO):
+			prsh_subTotal += item_price[n]
+			item_status[n] = 'Perishable'
+	
+	4. Are there more elements in item_list[n]?
+		(YES):
+			n += 1
+			Go back to step 3
+		(NO):
+			Proceed to the next step
+	
+	6. subTotal = nonprsh_subTotal + prsh_subTotal
+	   tax = nonprsh_subTotal * 0.13
+	   total = subTotal + tax
+	   
+	7. Display:
+		+------------------------------+
+		|	YOUR TOTAL IS : [total]	   |
+		|Please choose a payment method|
+		|(CREDIT CARD)     (DEBIT CARD)|
+		+------------------------------+
+	
+	8. Did the user choose a payment option?
+		(YES):
+			Did the user choose "CREDIT CARD"?
+				(YES):
+					Call <PAYMENT PROCESSOR : BLACKBOX PROCESS>
+					SET FOR CREDIT CARD
+				(NO):
+					Did the user choose "DEBIT CARD"?
+						(YES):
+							Call <PAYMENT PROCESS : BALCKBOX PROCESS>
+							SET FOR DEBIT CARD
+		(NO):
+			Go back to step #5
+			
+	9. Was the payment successful?
+		(YES):
+			Proceed to the next step
+		(NO):	
+			Go back to step 1
+			
+	10. Call <RECEIPT : SUB _ PROCESS>
+	
+	11. END
+	
+	-----------------------
+	RECEIPT : SUB - PROCESS
+	-----------------------
+	1. START
+	
+	2. n = 1
+	
+	2. Display:
+		+------------------------------------------------------------+
+		|PRODUCT NAME			PRODUCT TYPE			PRODUCT PRICE|
+		|item_list[n]		   item_status[n]			item_price[n]|
+	
+	3. Are there more elements in item_list[n]?
+		(YES):
+			n += 1
+		(NO):
+			Proceed to #6
+	
+	4. Display:
+		|item_list[n]		   item_status[n]			item_price[n]|
+		
+	5.  Are there more elements in item_list[n]?
+		(YES):
+			Go to step #3
+		(NO):
+			Proceed to next step
+			
+	6. Display:
+		|SUBTOTAL		-			[subTotal]						 |
+		|TAXES			-			[tax]							 |
+		|TOTAL			- 			[total]							 |
+		+------------------------------------------------------------+
+	
+	7. END
