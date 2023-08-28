@@ -1,0 +1,175 @@
+
+	WORKSHOP - 5 (A La Carte Entertainment)
+	Logic - 3
+	---------------------------------------
+	Name: Kushaal Singh
+	Group: 2 | Member: 3
+	---------------------------------------
+	
+	PART - 3 (Discounts)
+	====================
+	
+	1. START
+	
+	2. Declare variables:
+		- total_discount = 0
+		- numPeople = 0
+		- ticketCharges = 0
+		- showTime = 0 (Matinée = 1 | Evening = 2)
+		- showType = 0 (Musical = 1 | Theatre = 2)
+	
+	3. Display :
+			"Discounts Breakdown ...."
+			"2 people--------------5%"
+			"3 people-------------15%"
+			"4 people-------------20%"
+			"5+ people------------30%"
+	
+	
+	4. Display: "ENTER THE NUMBER OF PEOPLE VISITING: "
+	
+	5. Get [numPeople]
+	
+	6. Display:
+			WHICH TYPE OF SHOW DO YOU WANT TO SEE? (Select one)
+				1) Musical
+				2) Theatre
+	
+	7. Get [showType]
+			If user selected "Musical":
+				- [showType] = 1
+			Else:
+				- [showType] = 2
+	
+	8. Display:
+			WHICH TIME SHOW TIME DO YOU PREFER? (Select one)
+				1) Matinée
+				2) Evening
+	
+	7. Get [showTime]
+			If user selected "Matinée":
+				- [showTime] = 1
+			Else:
+				- [showTime] = 2
+				
+	8. 	If [showType] == 1, [showTime] == 1
+			- ticketCharges = numPeople * 70.00
+	
+	9. If showType == 1, showTime == 2
+			- ticketCharges = numPeople * 150.00
+			
+	10. If showType == 2, showTime == 1
+			- ticketCharges = numPeople * 55.00
+			
+	11. If showType == 2, showTime == 2
+			- ticketCharges = numPeople * 115.00
+	
+	12. If num_people = 2								
+			- total_discount = 0.05 * ticketCharges
+			
+	13. If numPeople = 3								
+			- total_discount = 0.15 * ticketCharges
+			
+	14. If numPeople = 4								
+			- total_discount = 0.2	* ticketCharges
+			
+	15. If numPeople >= 5 								
+			- total_discount = 0.3  * ticketCharges
+			
+	16. Return [total_discount]
+	
+	17. END
+	
+	Scenario 1 - One senior get's no discount as you need to be a minimum of two people to get a discount.
+	
+	Scenario 2 - The group gets a $24.75 discount.
+	
+	Scenario 3 - The group gets a $315 in discount.
+	
+--------------------------------------------------------------------------
+	
+	PART - 4 (Snack Charges)
+	========================
+	
+	1. START
+	
+	2. Declare variables:
+		- snackType = 0 (Non-Alcoholic Beverage = 1,
+						 Alcoholic Beverage = 2,
+						 Candy = 3)
+		- snack_Qty = 0
+		- cart_total = 0
+	
+	3. Display :
+			"Snack Stand prices ...."
+			"Non-Alcoholic Beverage----------2.25"
+			"Alcoholic Beverage--------------7.50"
+			"Misc. Candy Item----------------1.75"
+	
+	4. Display:
+			Which Sanck would you like?
+			1. Non-Alcoholic Beverage
+			2. Alcoholic Beverage
+			3. Misc. Candy Item
+			4. No Snacks
+	
+	5. Get [snackType]
+			If user chose "Non-Alcoholic Beverage":
+				- [snackType] = 1
+				
+			Else if user chose "Alcoholic Beverage"
+				- [snackType] = 2
+				
+			Else if user chose "Misc. Candy Item"
+				- [snackType] = 3
+				
+			Else 
+				- Proceed to step #10
+	
+	4. If [snackType] equals 1:
+			Display:
+				How many Non-Alcoholic Beverage would you like? : 
+				
+	   Else If [snackType] equals 2:
+			Display:
+				How many Alcoholic Beverages would you like? : 
+				
+				
+		Else
+			Display:
+			How many Candys would you like? :
+	
+	6. Get [snack_Qty]
+	
+	7. If [snackType] = 1
+			cart_total += 2.25 * [snack_Qty]
+			
+	   Else If [snackType] = 2
+			cart_total += 7.50 * [snack_Qty]
+			
+	   Else 
+			cart_total += 1.75 * [snack_Qty]
+			
+	8. Display:
+			Do you wish to get any other snacks?
+				1. YES
+				2. NO
+	
+	9. If (YES):
+			- Go back to step #4
+	   
+	   Else:
+			- Proceed to next step
+			
+	10. Return cart_total
+	
+	11. END
+	
+	
+	Scenario 1 - Cart total is zero
+	
+	Scenario 2 - $9, that is 2.25 times 4 (Number of soft drinks)
+	
+	Scenario 3 - $4.5 (soft drinks) + $30 (Alcoholic Beverages) = $34.5
+	
+	Scenario 4 - $7.5 (wine) + $7 (chocolet bars) = $14.5

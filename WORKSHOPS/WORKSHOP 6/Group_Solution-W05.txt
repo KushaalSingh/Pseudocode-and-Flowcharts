@@ -1,0 +1,342 @@
+Workshop 6 - Group solution
+Taehwa Hong 132546227
+Kushaal Singh 115320228
+
+========================
+SELECTION DATA STRUCTURE
+========================
+
+Transaction List
+-------------------------
+slotID
+slot letter
+slot number
+item sku
+quantity
+item price
+item description
+total price
+-------------------------
+Product
+-------------------------
+sku
+maxQuantity (0)
+minQuantity (10)
+price
+description
+===============
+
+======================
+PAYMENT DATA STRUCTURE
+======================
+Payment List
+---------------
+numberOfItems = n (received from a previous function, n is a number)
+slotID[n] (received from a previous function)
+buy_quantity[] (received from a previous function)
+price[] 
+payment_option = 0 
+cartTotal = 0.00
+
+---------------
+DECLARE OBJECTS
+---------------
+{PAYMENT_PROCESSOR}
+{CARD_SENSOR}
+{CANCLE_BUTTON}
+{COLUMN_ROW_BUTTONS}
+{LCD_SCREEN}
+{ENTER_BUTTON}
+{NFC}
+
+============
+MAIN PROCESS
+============
+1. START
+
+2. Disable all OBJECTS
+
+3. Call <Idle State : Sub - Process>
+
+4. Call <Active State : Sub - Process>
+
+5. Call <Selection - Sub Process>
+
+6. Call <Cancle - Sub Process>
+
+4. Display:
+	
+	+----------------------------------------------------+
+	|Would you like to go ahead with your payment process|
+    | 						                             |
+	|			   Press "Enter" to continue             |
+	|						  OR                         |
+	|			    Press "Cancle" to stop               |
+	+----------------------------------------------------+
+	
+5. If the user press "Enter"
+	(YES):
+		Call <PAYMENT - Sub Process>
+
+6. If the user pressed "Cancle"
+	(YES):
+		Call <CANCLE - Sub Process>
+		
+7. END
+
+===================
+State - Sub Process
+===================
+1. START
+
+2. variables: State List(set to empty)
+
+3. check hardware state
+	a. is hardware state enabled?
+		Yes:
+			i. set hardware state = enabled
+		No:
+			i. set hardware state = disabled
+
+4. check software state
+	a. is software state enabled?
+		Yes:
+			i. set software state = enabled
+		No:
+			i. set software state = disabled
+
+5. Display: "Out of Service"
+
+6. END
+
+==========================
+Idle State : Sub - Process
+==========================
+1. START
+
+2. ACTIVATE {LCD_SCREEN} & {ENTER_BUTTON}
+
+3. Display:
+	+---------------------------+
+	|PLEASE PRESS ENTER TO BEGIN|
+	+---------------------------+
+	
+4. Has the user pressed the "enter button"?
+	(YES):
+		proceed to the next step.
+	(NO):
+		Go back to step 3.
+		
+5. END
+
+============================
+Active State : Sub - Process
+============================
+1. START
+
+2. ACTIVATE:
+	{COLUMN_ROW_BUTTONS} &  {CANCLE_BUTTON}
+
+3. END
+
+=============================
+Payment State : Sub - Process
+=============================
+1. START
+
+2. ACTIVATE:
+	{PAYMENT_PROCESSOR}, {CARD_SENSOR}, {NFC}
+	
+3. END
+
+=======================
+Selection - Sub Process
+=======================
+
+1. START
+
+2. variables: Transaction (set to empty)
+
+3. Display: "Please Select Slot ID"
+	a. did user select slot ID?
+		Yes:
+			i. is slot letter = letter?
+				Yes:
+					- set slot letter = selected letter
+					
+				No:
+					-  Display: "Please select letter"
+					- go back to step #3
+			
+			ii. is slot number = number?
+				Yes:
+					-  set slot number = selected letter
+					
+				No:
+					-  Display: "Please select number"
+					- go back to step #3
+					
+			iii. set slotID = slot letter + slot number
+			iiii. set item sku = sku
+			iiiii. set item description = description
+			iiiiii. set item price = price
+			
+		No:
+			i. go back to step #3
+
+4. Call <CANCLE : Sub - Process>
+			
+5. Display: "Please Select Quantity"
+	a. did user select quantity?
+		Yes:
+			is quantity more than minQuantity and less than maxQuantity?
+				Yes:
+					- set quantity = selected quantity
+					- set total price += (item price * quantity) 
+				
+				No:
+					- Display: "Please select between 1 and 9"
+					
+6. Call <CANCLE : Sub - Process>
+
+7. Check sku
+	a. is the item in stock?
+		Yes:
+			i. set item price = price
+			
+		No:
+			i. Display: "Out of Stock"
+			ii. go back to step #3
+
+8. Call <CANCLE : Sub - Process>
+
+9. Display: item description, quantity, total price
+
+10. Display: "Do you want more item(s)?"
+	Yes:
+		a. go back to step #3
+		
+11. Call <CANCLE : Sub - Process>
+	
+12. Did user pressed "Pay" button?
+	Yes:
+		a. Call Payment Sub-Process
+
+13. Call <CANCLE : Sub - Process>
+
+14. END
+
+=====================
+Payment - Sub Process
+=====================
+1. START
+	
+2. Display:
+	
+	+---------------------------------+
+	|  Press the corresponding number |
+	|				                  | 
+	|          1>CREDIT CARD          |
+	|          2>BANK CARD            |
+	|          3>NFC PHONE            |
+	|   4>VENDING MACHINE PHONE APP   |
+	|			  	                  |
+	|Press the "Cancle" button to stop|
+	| 				                  |
+	|		    !!NO CASH!!           |
+	+---------------------------------+
+	
+3. Get [payment_option]
+
+4. Call <CANCLE : Sub - Process>
+
+5. [cartTotal] += price[slotID] * buy_quantity[slotID]
+		[numberOfItems] = n - 1
+			- Is [numberOfItems] equal to zero?
+				(YES):
+					- Proceed to the next step
+				(NO):
+					- Call <CANCLE : Sub - Process>
+					- Repeat step #4
+	
+
+6. If [payment_option] is equal to 1
+	(a) Activate {CARD_SENSOR}
+	
+	Display:
+		"Please insert / tap your credit card"
+	
+	Call <CANCLE : Sub - Process>
+
+7. If [payment_option] is equal to 
+	(a) Activate {CARD_SENSOR}
+	
+	Display:
+		"Please insert / tap your bank card"
+		
+	Call <CANCLE : Sub - Process>
+
+8. If [payment_option] is 'NFC PHONE'
+	(a) Activate {NFC}
+	
+	Display:
+		"Please tap your phone"
+		
+	Call <CANCLE : Sub - Process>
+
+9. If [payment_option] is 'VENDING MACHINE PHONE APP'
+	Display:
+		"You will receive a payment notification on your mobile app"
+		
+	Call <CANCLE : Sub - Process>
+		
+10. Activate {PAYMENT_PROCESSOR}
+
+11. END
+
+======================
+CANCLE : Sub - Process
+======================
+1. START
+
+2. Has the user pressed the {CANCLE_BUTTON}?
+	(YES):
+		- Terminate process
+		- Display:
+			"The process is being cancelled"
+		- Disable current hardware state
+			- Call <Idle State : Sub - Process>
+	(NO):
+		- Proceed to the next step
+	
+	3. END
+	
+	
+=================
+Test Scenario - 1
+=================
+1. The user pressed "Enter" button.
+2. Machine enters the "active state"
+3. User makes a selection: B4
+4. User selects the quantity: 1
+5. User adds another item into card: D2
+6. User selects the quantity: 1
+7. User decides that they don't want to processd
+8. User presses "Cancle" button
+9. Process terminates
+10. Machine returns to idle state
+
+=================
+Test Scenario - 2
+=================
+1. The user presses "Enter" button
+2. Machine enters the "active state"
+3. User makes a selectino: A3
+4. User selects the quantity: 2
+4. Users presses the "Pay" button
+5. Machines goes into "Payment State"
+6. Users decides to use the "credit card"
+7. Machine processes the payment
+8. Payment successful
+9. Machine ends payment process
+10. Machine enters idel state again
