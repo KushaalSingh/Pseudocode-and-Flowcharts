@@ -1,8 +1,7 @@
 
 	WORKSHOPR - 5 : Group Solution
-	Kushaal Singh - 1156320228
-	Misol Kang - 181696212
-	Yuraj Kathait - 167749217
+	Kushaal Singh
+	------------------------------
 	
 	
 	Data Structures:
