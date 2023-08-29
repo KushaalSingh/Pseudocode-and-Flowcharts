@@ -2,9 +2,6 @@
 	WORKSHOP - 8 (Self Checkout)
 	Logic - 3
 	------------------------------
-	Name : Kushaal Singh
-	Group : 5 | Member : 3
-	------------------------------
 	
 	DATA STRUCTURES
 		- item_list[n] (n is number of product, received form a previous function)
