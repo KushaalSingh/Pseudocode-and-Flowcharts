@@ -1,5 +1,5 @@
 # **Applied Problem Solving** `(APS145)` **| SUMMER 2023**
-## WORKSHOP MARKS (Out of 10)
+## Marks out of 10
 | Workshop     | MARKS  |
 | ------------ | ------ |
 | WORKSHOP 1   | 9.7    |
