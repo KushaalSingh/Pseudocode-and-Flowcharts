@@ -1,6 +1,5 @@
 Workshop 6 - Group solution
-Taehwa Hong 132546227
-Kushaal Singh 115320228
+---------------------------
 
 ========================
 SELECTION DATA STRUCTURE
