@@ -2,9 +2,6 @@
 	WORKSHOP - 2 (Traffic Lights)
 	Logic - 3
 	-----------------------------
-	Name: Kushaal Singh
-	Group: 2 | Member: 3
-	-----------------------------
 	
 	1. START
 	
