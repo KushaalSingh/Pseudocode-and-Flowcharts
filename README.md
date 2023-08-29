@@ -1,4 +1,4 @@
-# **Applied Problem Solving** [`(APS145)`](https://learn.senecacollege.ca/ultra/courses/_701388_1/outline) **| SUMMER 2023**
+# **Applied Problem Solving** `(APS145)` **| SUMMER 2023**
 ## Student Information
 Name: **`Kushaal Singh`**  
 Student Number: **`115320228`**  
