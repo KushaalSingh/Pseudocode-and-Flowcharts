@@ -2,9 +2,6 @@
 	WORKSHOP - 8 (Self Checkout)
 	Group Solution
 	------------------------------
-	Kushaal Singh (1153020228)
-	Taehwa Hong (132546227)
-	------------------------------
 	
 	DATA STRUCTURES
 		- item_info
