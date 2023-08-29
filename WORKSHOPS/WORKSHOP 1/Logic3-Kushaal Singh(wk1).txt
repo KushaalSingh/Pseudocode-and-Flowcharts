@@ -2,9 +2,6 @@
 	WORKSHOP - 1 (Basketball Shootout)
 	Logic - 3
 	----------------------------------
-	Name: Kushaal Singh
-	Group: 2 | Member: 3
-	----------------------------------
 	
 	1. Start
 	
