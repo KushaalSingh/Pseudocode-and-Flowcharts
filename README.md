@@ -1,5 +1,6 @@
-# **Applied Problem Solving** `(APS145)` **| SUMMER 2023**
-### *Workshops for APS145*
-`No use of decision operator (diamond) in workshop 2 flowchart.`
+# **Applied Problem Solving**
+##### *These workshops are from `APS145` which introduce the concepts of computational thinking.*
+
+> No use of decision operator (diamond) in workshop 2 flowchart.
 
 > Did not submit workshop 7 & 8.
